@@ -28,4 +28,4 @@ function magic-enter \
     end
     commandline -f execute
 end
-bind \r magic-enter
+bind --user \r magic-enter
