@@ -1,4 +1,4 @@
-set -q __ohmyfish2 || set -U __ohmyfish2 $__fish_config_dir/.ohmyfish2
+set -q __ohmyfish2 || set -g __ohmyfish2 $__fish_config_dir/.ohmyfish2
 
 # Fisher events
 function _ohmyfish2_install --on-event ohmyfish2_install
