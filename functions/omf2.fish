@@ -5,8 +5,18 @@ function omf2 \
     # Temp HACK!
     if test "$argv[1..2]" = "prompt choose"
         __omf2_prompt_choose $argv[3..]
+    else if test "$argv[1..2]" = "prompt list"
+        __omf2_prompt_list $argv[3..]
     else
         echo "OMF2: TODO - implement this!"
+    end
+end
+
+function __omf2_prompt_list \
+    --description "List Oh-My-Fish2 prompts"
+
+    for contrib in omz_starship_prompts
+        path basename $__ohmyfish2/contribs/$contrib/prompts/*.toml | path change-extension ''
     end
 end
 
@@ -21,12 +31,12 @@ function __omf2_prompt_choose \
 
     starship init fish | source
 
-    set --local gill
+    set --local contrib
     set --local starship_config
     if test -n "$prompt"
-        for gill in omz omf
-            if test -r $__ohmyfish2/gills/$gill/prompts/$prompt.toml
-                set starship_config $__ohmyfish2/gills/$gill/prompts/$prompt.toml
+        for contrib in omz_starship_prompts
+            if test -r $__ohmyfish2/contribs/$contrib/prompts/$prompt.toml
+                set starship_config $__ohmyfish2/contribs/$contrib/prompts/$prompt.toml
                 break
             end
         end
