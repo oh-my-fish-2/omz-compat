@@ -1,5 +1,3 @@
-# TODO: Add completions
-
 alias r='repo'
 alias rra='repo rebase --auto-stash'
 alias rs='repo sync'
